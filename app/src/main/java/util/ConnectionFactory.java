@@ -4,6 +4,8 @@ package util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,6 +36,41 @@ public class ConnectionFactory {
             if(connection!=null){
             connection.close();    
             }            
+        } catch (SQLException ex) {
+            throw new RuntimeException("Erro ao encerrar conexão com banco de dados", ex);
+         }
+    }
+    
+    public static void closeConnection(Connection connection, 
+            PreparedStatement preparedStatement){
+        try {
+            if(connection!=null){
+            connection.close();    
+            }     
+            
+            if(preparedStatement != null){
+                preparedStatement.close();
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException("Erro ao encerrar conexão com banco de dados", ex);
+         }
+    }
+    
+    public static void closeConnection(Connection connection, 
+            PreparedStatement preparedStatement, 
+            ResultSet resultSet){
+        try {
+            if(connection!=null){
+            connection.close();    
+            }     
+            
+            if(preparedStatement != null){
+                preparedStatement.close();
+            }
+            
+            if(resultSet != null){
+                resultSet.close();
+            }
         } catch (SQLException ex) {
             throw new RuntimeException("Erro ao encerrar conexão com banco de dados", ex);
          }

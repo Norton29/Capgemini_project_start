@@ -5,24 +5,29 @@
 package model;
 
 import java.util.Date;
+import jdk.jfr.DataAmount;
+
 
 /**
  *
  * @author norton
+ *
  */
+
 public class Task {
     
     private int id;
     private String name;
     private String description;
     private String notes;
-    private boolean status;
+    private boolean completed;
     private Date deadline;
     private Date create_date;
     private Date update_date;
     private int id_project;
 
     public Task() {
+        this.create_date = new Date();
     }
 
     public Task(int id, String name, String description, String notes, boolean status, Date deadline, Date create_date, Date update_date, int id_project) {
@@ -30,7 +35,7 @@ public class Task {
         this.name = name;
         this.description = description;
         this.notes = notes;
-        this.status = status;
+        this.completed = status;
         this.deadline = deadline;
         this.create_date = create_date;
         this.update_date = update_date;
@@ -69,12 +74,12 @@ public class Task {
         this.notes = notes;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean isCompleted() {
+        return completed;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     public Date getDeadline() {
@@ -111,7 +116,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" + "id=" + id + ", name=" + name + ", description=" + description + ", notes=" + notes + ", status=" + status + ", deadline=" + deadline + ", create_date=" + create_date + ", update_date=" + update_date + ", id_project=" + id_project + '}';
+        return "Task{" + "id=" + id + ", name=" + name + ", description=" + description + ", notes=" + notes + ", status=" + completed + ", deadline=" + deadline + ", create_date=" + create_date + ", update_date=" + update_date + ", id_project=" + id_project + '}';
     }
     
     

@@ -3,18 +3,37 @@
  */
 package TudoApp;
 
-import java.sql.Connection;
-import util.ConnectionFactory;
+import controller.ProjectController;
+import java.util.Date;
+import java.time.LocalDate;
+import model.Project;
+
+
 
 public class App {
     
 
     public static void main(String[] args) {
+        
+        
+        ProjectController projectController = new ProjectController();
+        Project project =new Project();
        
-        Connection connection = ConnectionFactory.getConnection();
-        
-        
-        ConnectionFactory.closeConnection(connection);
+       
+       
+        project.setName("Teste Projeto2"); 
+        project.setCreate_date(new Date());
+        project.setUpdate_date(new Date());
+        projectController.insertProject(project);
+      
+
+       
+//       project.setName("Atualização projeto"); 
+//       project.setId(2);
+//       projectController.update(project);
+//       
+       
+       
         
     }
 }
